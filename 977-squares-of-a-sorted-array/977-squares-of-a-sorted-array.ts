@@ -1,7 +1,20 @@
 function sortedSquares(nums: number[]): number[] {
-    nums.forEach((part, index, nums) => {
-        nums[index] *= nums[index]
-    });
+    let n: number = nums.length
+    let start: number = 0;
+    let end: number = n-1;
     
-    return nums.sort((a,b) => { return a-b; })
+    let res: Array<number> = new Array(n);
+    let pos: number = n-1;
+
+    while(start <= end) {
+        if(Math.abs(nums[start]) < Math.abs(nums[end])) {
+            res[pos--] = nums[end] * nums[end];
+            --end;
+        } else {
+            res[pos--] = nums[start] * nums[start];
+            ++start;
+        }
+    }
+
+    return res;
 };
