@@ -1,25 +1,23 @@
 function reverseWords(s: string): string {
-    let begin: number = 0;
-    let end: number = 0;
-    let sa: string[] = s.split('');
+    let b = 0;
+    let e = 0;
+    let sa = s.split('');
     while(true) {
-        if(sa[end] === undefined || sa[end] === ' ') {
-            if(end != begin) {
-                let i:number = begin;
-                let j:number = end-1;
+        if(sa[e] === undefined || sa[e] === ' ') {
+            if(e != b) {
+                let i = b;
+                let j = e-1;
                 while(i<j) {
-                    let c: string = sa[i];
-                    sa[i] = sa[j];
-                    sa[j] = c;
-                    ++i;
-                    --j;
+                    let c = sa[i];
+                    sa[i++] = sa[j];
+                    sa[j--] = c;
                 }
             }
-            begin = end + 1;
+            b = e + 1;
         }
         
-        if(sa[end] === undefined) break;
-        ++end;
+        if(sa[e] === undefined) break;
+        ++e;
     }
     
     return sa.join('');
