@@ -1,18 +1,16 @@
 class Solution {
 public:
     bool isMonotonic(vector<int>& nums) {
-        return increasing(nums) || decreasing(nums);
-    }
-    
-    bool increasing(vector<int> &nums) {
-        for(int i=0; i<nums.size()-1; ++i)
-            if (nums[i] > nums[i+1]) return false;
-        return true;
-    }
-    
-    bool decreasing(vector<int> &nums) {
-        for(int i=0; i<nums.size()-1; ++i) 
-            if (nums[i] < nums[i+1]) return false;
+        int store = 0;
+        for(int i=0; i<nums.size()-1; ++i) {
+            int c = nums[i] - nums[i+1];
+            c = (c < 0) ? -1 : (c > 0) ? 1 : 0;
+            if(c != 0) {
+                if(c != store && store != 0) return false;
+                store = c;
+            }
+        }
+        
         return true;
     }
 };
