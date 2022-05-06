@@ -39,18 +39,8 @@ public:
             temp = temp->next;
         }
         
-        while(headA) {
-            temp->next = headA;
-            headA = headA->next;
-            temp = temp->next;
-        }
-        
-        while(headB) {
-            temp->next = headB;
-            headB = headB->next;
-            temp = temp->next;
-        }
-        
+        temp->next = ((headA) ? headA : headB);
+
         return res;
     }
 };
