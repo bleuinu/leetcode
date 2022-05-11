@@ -9,15 +9,11 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        if(!head) return false;
-        if(head->next == nullptr) return false;
+        auto turtle = head;
+        auto hare = head;
         
-        ListNode *turtle = head;
-        ListNode *hare = head->next;
-        
-        for(int i=0; i<10000; ++i) {
+        while(hare && hare->next) {
             turtle = turtle->next;
-            if(!hare) return false;
             hare = hare->next;
             if(!hare) return false;
             hare = hare->next;
