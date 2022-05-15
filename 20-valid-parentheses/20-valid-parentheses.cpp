@@ -13,16 +13,11 @@ public:
                 case '(':
                     stk.push(s[i]);
                     break;
-                case ']':
-                    if(stk.empty() || stk.top() != '[') return false;
-                    stk.pop();
-                    break;
-                case '}':
-                    if(stk.empty() || stk.top() != '{') return false;
-                    stk.pop();
-                    break;
-                case ')':
-                    if(stk.empty() || stk.top() != '(') return false;
+                default:
+                    if(stk.empty()) return false;
+                    if(s[i] == ']' && stk.top() != '[') return false;
+                    if(s[i] == '}' && stk.top() != '{') return false;
+                    if(s[i] == ')' && stk.top() != '(') return false;
                     stk.pop();
             }
         }
